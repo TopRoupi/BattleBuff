@@ -1,0 +1,27 @@
+-# frozen_string_literal: true
+p#notice
+  = notice
+button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent
+  |  Button 
+h1
+  = @room.name
+= turbo_stream_from "room"
+= turbo_frame_tag "room" do
+  .row
+    .col-md-6
+      h2
+        | radiant
+      .list-group
+        - @room.room_players.first(5).each do |room_player|
+          .list-group-item.list-group-item-success
+            = render room_player
+    .col-md-6
+      h2
+        | dire
+      .list-group
+        - @room.room_players.last(5).each do |room_player|
+          .list-group-item.list-group-item-danger
+            = render room_player
+= button_to 'Start Room', start_room_path(@room)
+= link_to 'Edit', edit_room_path(@room)
+= link_to 'Back', rooms_path

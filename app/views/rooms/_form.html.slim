@@ -1,0 +1,16 @@
+-# frozen_string_literal: true
+= form_with(model: room) do |form|
+  - if room.errors.any?
+    #error_explanation
+      h2
+        = pluralize(room.errors.count, "error")
+        |  prohibited this room from being saved:
+      ul
+        - room.errors.each do |error|
+          li
+            = error.full_message
+  .field
+    = form.label :name
+    = form.text_field :name
+  .actions
+    = form.submit

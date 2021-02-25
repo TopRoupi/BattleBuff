@@ -1,0 +1,9 @@
+-# frozen_string_literal: true
+p#notice
+  = notice
+h1
+  | Tweets
+= render "tweets/form", tweet: @tweet
+= turbo_stream_from "tweets"
+= turbo_frame_tag "tweets" do
+  = render @tweets
