@@ -10,44 +10,10 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stimulus_include_tags %>
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-cyan.min.css" />
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   </head>
 
   <body>
-    <div class="mdl-layout__container">
-      <div class="docs-layout mdl-layout mdl-js-layout is-upgraded is-small-screen" data-upgraded=",MaterialLayout">
-        <header class="docs-layout-header mdl-layout__header is-casting-shadow">
-          <div class="mdl-layout__header-row">
-            <span class="docs-layout-title mdl-layout-title"><a href="../">Material<br>Design<br>Lite</a></span>
-          </div>
-          <div class="docs-navigation__container">
-            <nav class="docs-navigation mdl-navigation">
-              <a href="../index.html" class="mdl-navigation__link about">About</a>
-              <a href="../started/index.html" class="mdl-navigation__link started">Getting Started</a>
-              <a href="../templates/index.html" class="mdl-navigation__link templates">Templates</a>
-              <a href="../components/index.html" class="mdl-navigation__link components">Components</a>
-              <a href="../styles/index.html" class="mdl-navigation__link styles">Styles</a>
-              <a href="../customize/index.html" class="mdl-navigation__link customize">Customize</a>
-              <a href="../showcase/index.html" class="mdl-navigation__link showcase">Showcase</a>
-              <a href="../faq/index.html" class="mdl-navigation__link faq">FAQ</a>
-              <div class="spacer"></div>
-              <a href="https://github.com/google/material-design-lite" class="mdl-navigation__link mdl-navigation__link--icon github"><i class="material-icons">link</i><span>GitHub</span></a>
-              <a href="../started/index.html#download" class="mdl-navigation__link mdl-navigation__link--icon download">
-                <i class="material-icons"></i><span>Download</span>
-                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fab mdl-button--mini-fab mdl-color--lime-A200" data-upgraded=",MaterialButton,MaterialRipple">
-                  <i class="material-icons"></i>
-                <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
-              </a>
-            </nav>
-          </div>
-          <i class="material-icons scrollindicator scrollindicator--right disabled"></i>
-          <i class="material-icons scrollindicator scrollindicator--left disabled"></i>
-        </header>
-        <%= yield %>
-      </div>
-    </div>
+    <%= render(Layout::Nav::Bar::Component.new())%>
+    <%= yield %>
   </body>
 </html>
