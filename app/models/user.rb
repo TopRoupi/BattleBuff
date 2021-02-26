@@ -9,7 +9,10 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = "aaa@aaa.com"
+      user.email = "placeholder@mail.com"
+      user.avatar_url = auth["info"]["image"]
+      user.profile_url = auth["info"]["urls"]["Profile"]
+      user.nickname = auth["info"]["nickname"]
       user.password = Devise.friendly_token[0, 20]
     end
   end

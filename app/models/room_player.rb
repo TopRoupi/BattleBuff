@@ -1,7 +1,4 @@
-# frozen_string_literal: true
-
 class RoomPlayer < ApplicationRecord
-  belongs_to :room
-
-  after_update_commit { broadcast_replace_to "room" }
+  belongs_to :user
+  belongs_to :room_team
 end

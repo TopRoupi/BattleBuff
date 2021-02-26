@@ -11,6 +11,7 @@ html
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stimulus_include_tags
-  body
-    = render(Layout::Nav::Bar::Component.new())
-    = yield
+  body.bg-gray-900.text-white
+    = render(Layout::NavBar::Component.new())
+    .container.max-w-5xl.mx-auto.m-8
+      = yield
