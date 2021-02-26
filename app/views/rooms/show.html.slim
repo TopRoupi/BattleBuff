@@ -1,26 +1,9 @@
 -# frozen_string_literal: true
 
-= render(Rooms::PlayersCard::Component.new)
+|agua
+#lol
+button data-reflex="click->RoomTeams::Card::PlayerSlot::ComponentReflex#lol" dwa
 
-h1
-  = @room.name
-= turbo_stream_from "room"
-= turbo_frame_tag "room" do
-  .row
-    .col-md-6
-      h2
-        | radiant
-      .list-group
-        - @room.room_teams[0].room_players.each do |room_player|
-          .list-group-item.list-group-item-success
-            = render room_player
-    .col-md-6
-      h2
-        | dire
-      .list-group
-        - @room.room_teams[1].room_players.each do |room_player|
-          .list-group-item.list-group-item-danger
-            = render room_player
+= render(Rooms::PlayersCard::Component.new(room: @room))
+
 = button_to 'Start Room', start_room_path(@room)
-= link_to 'Edit', edit_room_path(@room)
-= link_to 'Back', rooms_path

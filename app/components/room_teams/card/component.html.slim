@@ -1,6 +1,5 @@
 .my-3.px-3.w-full.overflow-hidden.bg-gray-700.rounded.shadow-lg.pt-3.md:mx-2
-  button.focus:outline-none.text-white.text-sm.py-2.5.px-5.rounded-md.bg-gradient-to-r.from-green-700.to-green-800.transform.w-full.mb-3
-    | Enter position 1
-  button.focus:outline-none.text-white.text-sm.py-2.5.px-5.rounded-md.bg-gradient-to-r.from-green-700.to-green-800.transform.w-full.mb-3
-    | Enter position 1
+  - (1..5).each do |position|
+    - room_player = @room_team.room_players.find_by(position: position)
+    = render(RoomTeams::Card::PlayerSlot::Component.new(position: position, room_team: @room_team, room_player: room_player))
 

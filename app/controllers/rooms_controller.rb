@@ -1,10 +1,20 @@
 # frozen_string_literal: true
 
 class RoomsController < ApplicationController
-  before_action :set_room, only: [:show, :edit, :update, :destroy, :start]
+  before_action :set_room, only: [:show, :edit, :update, :destroy, :start, :enter, :leave]
 
   def start
     CreateLobbyJob.perform_later @room
+  end
+
+  def enter
+    team = @room.room_teams.find(params[:team])
+    position = params[:position]
+    RoomPlayer.create(room_team: team, user: current_user, position: position)
+  end
+
+  def leave
+    @room.room_teams.find(params[:team]).room_players.find_by(user: current_user).destroy
   end
 
   # GET /rooms

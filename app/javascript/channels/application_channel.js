@@ -1,0 +1,11 @@
+import CableReady from 'cable_ready'
+import consumer from "./consumer"
+
+consumer.subscriptions.create("ApplicationChannel", {
+  received(data) {
+    console.log('b')
+    if (data.cableReady) CableReady.perform(data.operations)
+  }
+});
+
+console.log('streaming application channel')
