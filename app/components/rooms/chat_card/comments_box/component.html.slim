@@ -1,9 +1,12 @@
-.flex.flex-col.overflow-y-auto.mb-2.bg-gray-800.rounded.w-full [
+.flex.flex-col.overflow-y-auto.mb-4.bg-gray-800.rounded.w-full [
   style="height: 350px"
   data-controller="rooms--chat-card--comments-box--component"
   data-rooms--chat-card--comments-box--component-target="comments_box"
+  data-action="chats:added@document->rooms--chat-card--comments-box--component#scroll"
   ]
-  .grid.grid-cols-12.gap-y-1.pb-1
+  .grid.grid-cols-12.gap-y-1.pb-1 [
+    id="room-#{@room.id}-chat"
+    ]
     - @comments.each do |comment|
       = render(Rooms::ChatCard::CommentsBox::Comment::Component.new(comment: comment))
 

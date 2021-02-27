@@ -6,12 +6,14 @@ class CreateLobbyJob < ApplicationJob
   def perform(room)
     players_params = ""
 
-    room.room_players.first(5).select { |n| n.dota_id }.each do |player|
-      players_params += "#{player.dota_id} rad "
+    room.room_teams.first.room_players.each do |player|
+      id = player.user.uid.to_i #- 76561197960265728
+      players_params += "#{id} rad "
     end
 
-    room.room_players.last(5).select { |n| n.dota_id }.each do |player|
-      players_params += "#{player.dota_id} dir "
+    room.room_teams.second.room_players.each do |player|
+      id = player.user.uid.to_i #- 76561197960265728
+      players_params += "#{id} dir "
     end
 
     `app/jobs/dota_bot/bot.py #{room.name} 123 #{players_params}`

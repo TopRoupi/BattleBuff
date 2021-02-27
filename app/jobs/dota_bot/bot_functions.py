@@ -18,11 +18,14 @@ def create_lobby(dota, name, password):
     dota.leave_practice_lobby()
     dota.sleep(1)
     dota.create_tournament_lobby(password= password, tournament_game_id=None, tournament_id=0, options={
-        'allow_cheats': False,
+        'allow_cheats': True,
         'visibility': 0,
         'server_region': 10, #10-> Brazil
         'game_mode': 2, # 2-> CAPTAINS MODE, 1-> ALL PICK
         'game_name': name,
+        'fill_with_bots': True,
+        'dota_tv_delay': 2,
+        'pause_setting': 1
     })
     dota.sleep(1)
     dota.join_practice_lobby_team()
@@ -61,9 +64,9 @@ def manage_lobby(dota, client, room_name, room_pass, players):
     create_lobby(dota, room_name, room_pass)
     dota.sleep(1)
     invite_players(dota, players)
-    dota.sleep(180)
-    if ready_players(players) < 10:
-        end_bot(dota, client)
+    dota.sleep(60)
+    # if ready_players(players) < 10:
+    #     end_bot(dota, client)
     dota.launch_practice_lobby()
     dota.sleep(5)
     end_bot(dota, client)

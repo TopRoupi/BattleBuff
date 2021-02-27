@@ -1,3 +1,3 @@
 .mx-2.bg-gray-700.rounded.shadow-lg.flex.flex-col.flex-auto.flex-shrink-0.h-full.p-4
-  = render(Rooms::ChatCard::CommentsBox::Component.new(comments: @room.comments.last(20)))
+  = render(Rooms::ChatCard::CommentsBox::Component.new(comments: @room.comments.last(20), room: @room))
   = render(Rooms::ChatCard::CommentForm::Component.new(room: @room))

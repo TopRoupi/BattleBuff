@@ -4,7 +4,10 @@ export default class extends ApplicationController {
   static targets = ['comments_box']
 
   connect() {
-    console.log("a")
+    this.scroll()
+  }
+
+  scroll() {
     this.comments_boxTarget.scrollTop = this.comments_boxTarget.scrollHeight;
   }
 }
