@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_040722) do
+ActiveRecord::Schema.define(version: 2021_02_27_104242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "commentable_type", null: false
+    t.bigint "commentable_id", null: false
+    t.string "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "room_players", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -63,6 +74,7 @@ ActiveRecord::Schema.define(version: 2021_02_26_040722) do
     t.index ["uid"], name: "index_users_on_uid"
   end
 
+  add_foreign_key "comments", "users"
   add_foreign_key "room_players", "room_teams"
   add_foreign_key "room_players", "users"
   add_foreign_key "room_teams", "rooms"

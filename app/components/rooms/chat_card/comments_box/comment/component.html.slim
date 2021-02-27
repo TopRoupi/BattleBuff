@@ -1,0 +1,7 @@
+.col-start-1.col-end-8.px-3.rounded-lg
+  .flex.flex-row.items-center
+    /.flex.items-center.justify-center.h-10.w-10.rounded-full.bg-indigo-500.flex-shrink-0
+    .text-sm.bg-gray-400.py-1.px-4.shadow.rounded-xl.text-black
+      = @comment.user.nickname
+    .relative.ml-3.text-sm.bg-white.py-1.px-4.shadow.rounded-xl.text-black.break-all
+      = @comment.body

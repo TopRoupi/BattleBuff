@@ -1,0 +1,17 @@
+.flex.flex-row.items-center.w-full [
+    data-controller="rooms--chat-card--comment-form--component"
+    data-room="#{@room.id}"
+  ]
+  .flex-grow
+    .relative.w-full
+      input.flex.w-full.border.rounded-xl.focus:outline-none.focus:border-gray-800.pl-4.h-10.bg-gray-600.border-gray-600 [
+        data-rooms--chat-card--comment-form--component-target="input"
+      ]
+  .ml-4
+    button.flex.items-center.justify-center.bg-indigo-500.hover:bg-indigo-600.rounded-xl.text-white.px-4.py-1.flex-shrink-0.h-10 [
+      data-action="click->rooms--chat-card--comment-form--component#post"
+    ]
+      span Send
+      .ml-2
+        svg.w-4.h-4.transform.rotate-45.-mt-px fill="none" stroke="currentColor" viewbox=("0 0 24 24") xmlns="http://www.w3.org/2000/svg"
+          path d=("M12 19l9 2-9-18-9 18 9-2zm0 0v-8") stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

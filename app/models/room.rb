@@ -3,6 +3,7 @@
 class Room < ApplicationRecord
   has_many :room_teams
   has_many :room_players, through: :room_teams
+  has_many :comments, as: :commentable
 
   after_commit :set_room_teams, on: :create
 
