@@ -10,7 +10,7 @@ class RoomTeams::Card::PlayerSlot::ComponentReflex < ApplicationReflex
     leave_room
     player = RoomPlayer.create(room_team: room_team, user: current_user, position: position)
     update_room_component
-    cable_ready["application-stream"].console_log(message: "current_user = #{current_user.id} player = #{player.user.id}").broadcast
+    # cable_ready["application-stream"].console_log(message: "current_user = #{current_user.id} player = #{player.user.id}").broadcast
   end
 
   def leave
@@ -30,7 +30,8 @@ class RoomTeams::Card::PlayerSlot::ComponentReflex < ApplicationReflex
   def update_room_component
     cable_ready["application-stream"].outer_html(
       selector: dom_id(@room),
-      html: ApplicationController.render(Rooms::PlayersCard::Component.new(room: @room), layout: false)
+      html: RoomsController.render(Rooms::PlayersCard::Component.new(room: @room), layout: false),
+      permanent_attribute_name: "data-reflex-permanent"
     ).broadcast
   end
 end

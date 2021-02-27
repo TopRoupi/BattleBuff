@@ -13,4 +13,4 @@ import "controllers"
 
 Rails.start()
 ActiveStorage.start()
-
+require("turbolinks").start()
