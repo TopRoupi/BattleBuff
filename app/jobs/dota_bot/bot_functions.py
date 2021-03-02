@@ -21,7 +21,7 @@ def create_lobby(dota, name, password):
         'allow_cheats': True,
         'visibility': 0,
         'server_region': 10, #10-> Brazil
-        'game_mode': 2, # 2-> CAPTAINS MODE, 1-> ALL PICK
+        'game_mode': 1, # 2-> CAPTAINS MODE, 1-> ALL PICK
         'game_name': name,
         'fill_with_bots': True,
         'dota_tv_delay': 2,
@@ -49,6 +49,22 @@ def end_bot(dota, client):
     exit()
 
 def manage_lobby_players(dota, lobby, players):
+    if lobby.match_outcome:
+        print('a')
+        print(lobby)
+        if lobby.match_outcome == 2:
+            print( "match_result ", "rad")
+            print(" match_id ", lobby.match_id)
+            dota.exit()
+            exit()
+        if lobby.match_outcome == 3:
+            print(" match_result ", "dire")
+            print(" match_id ", lobby.match_id)
+            dota.exit()
+            exit()
+    else:
+        print('b')
+
     for member in lobby.all_members:
         if member.id not in players:
             dota.practice_lobby_kick(SteamID(member.id).as_32)
@@ -64,9 +80,9 @@ def manage_lobby(dota, client, room_name, room_pass, players):
     create_lobby(dota, room_name, room_pass)
     dota.sleep(1)
     invite_players(dota, players)
-    dota.sleep(60)
+    dota.sleep(10)
     # if ready_players(players) < 10:
     #     end_bot(dota, client)
     dota.launch_practice_lobby()
     dota.sleep(5)
-    end_bot(dota, client)
+    # end_bot(dota, client)

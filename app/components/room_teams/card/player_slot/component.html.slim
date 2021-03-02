@@ -5,7 +5,7 @@
       .ml-2.flex
         = @player.nickname
         .text-gray-600.ml-2
-          = "pos #{@position}"
+          = position_to_role(@position)
     div.hidden id="leave-button-#{@player.id}"
       button.focus:outline-none.text-white.text-sm.py-1.px-5.rounded-md.bg-gradient-to-r.from-red-700.to-red-800.transform.w-full.hover:scale-105 [
         data-reflex="click->RoomTeams::Card::PlayerSlot::ComponentReflex#leave"

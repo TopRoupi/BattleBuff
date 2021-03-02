@@ -11,7 +11,7 @@ import sys
 client = SteamClient()
 dota = Dota2Client(client)
 
-logging.basicConfig(format='[%(asctime)s] %(levelname)s %(name)s: %(message)s', level=logging.DEBUG)
+# logging.basicConfig(format='[%(asctime)s] %(levelname)s %(name)s: %(message)s', level=logging.DEBUG)
 
 room_name = sys.argv[1]
 room_pass = sys.argv[2]

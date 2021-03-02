@@ -16,6 +16,9 @@ class CreateLobbyJob < ApplicationJob
       players_params += "#{id} dir "
     end
 
+    puts "aaaaaaaaaaaa"
+    players_params = "76561198110355561 rad"
+    puts players_params
     `app/jobs/dota_bot/bot.py #{room.name} 123 #{players_params}`
   end
 end
