@@ -17,12 +17,11 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # https://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: postgres
+  user: postgres
+  password: postgres
   host: localhost
-# user: postgres
-# password: postgres
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
@@ -83,6 +82,4 @@ test:
 #
 production:
   <<: *default
-  database: battlebuff_production
-  username: fec
-  password: <%= ENV['FEC_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>

@@ -36,6 +36,8 @@ gem "omniauth-steam"
 # gem "hotwire-rails"
 gem "stimulus_reflex", "~> 3.4"
 
+gem 'sassc', '~> 2.1.0'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
