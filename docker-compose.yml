@@ -1,0 +1,48 @@
+version: '3'
+volumes:
+  db-data:
+  shared-data:
+  bundle:
+  node_modules:
+  packs:
+services:
+  db:
+    image: postgres:11.1
+    env_file: .env
+    volumes:
+      - .psqlrc:/root/.psqlrc:ro
+      - db-data:/var/lib/postgresql/db-data
+      - ./log:/root/log:cached
+    ports:
+      - 5432
+    healthcheck:
+      test: pg_isready -U postgres -h 127.0.0.1
+      interval: 5s
+  web:
+    build: .
+    env_file: .env
+    command: bundle exec rails s -p 80 -b '0.0.0.0'
+    volumes: 
+      - .:/usr/src/app
+    ports:
+      - "80:80"
+    links:
+      - db
+    depends_on:
+      db:
+        condition: service_healthy
+  webpacker:
+    build: .
+    env_file: .env
+    command: ./bin/webpack-dev-server
+    ports:
+      - '3035:3035'
+    volumes:
+      - .:/app:cached
+      - bundle:/usr/local/bundle
+      - node_modules:/app/node_modules
+      - packs:/app/public/packs
+    environment:
+      - NODE_ENV=${NODE_ENV:-development}
+      - RAILS_ENV=${RAILS_ENV:-development}
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
