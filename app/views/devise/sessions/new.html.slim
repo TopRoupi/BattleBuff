@@ -1,0 +1,15 @@
+- content_for :title, 'Log In'
+
+= render "devise/shared/form_card" do
+  = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    = f.input :email, required: false, autofocus: true, input_html: { autocomplete: "email" }
+    = f.input :password, required: false, input_html: { autocomplete: "current-password" }
+    = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+    = f.button :submit, "Log In", class: "w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none"
+
+
+
+.block.text-gray-500.font-bold class="md:w-2/3"
+  input.mr-2.leading-tight type="checkbox"
+  label.text-sm
+    | Send me your newsletter!

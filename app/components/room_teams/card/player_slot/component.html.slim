@@ -1,8 +1,8 @@
 - if @room_player
-  .w-full.bg-gray-800.rounded.px-5.py-2.mb-3.flex.justify-between.items-center.h-11
+  .w-full.bg-gray-800.rounded.px-5.py-2.mb-3.flex.justify-between.items-center.h-11.select-none
     .flex.items-center
       img.h-8.w-8.rounded-full[src="#{@player.avatar_url}" alt=""]
-      .ml-2.flex
+      .ml-2.flex.text-white
         = @player.nickname
         .text-gray-600.ml-2
           = position_to_role(@position)

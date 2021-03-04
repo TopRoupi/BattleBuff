@@ -1,0 +1,12 @@
+.flex
+  .container.mx-auto
+    .max-w-md.mx-auto.bg-gray-800.rounded.py-7
+      .text-center
+        h1.my-3.text-3xl.font-semibold.text-gray-200
+          = yield :title
+      .m-7
+        = yield
+      .text-center.text-gray-400.mb-7
+        | or
+      .text-center.mb-3
+        = render "devise/shared/links"

@@ -4,7 +4,7 @@ require "test_helper"
 
 class RoomsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @room = rooms(:one)
+    @room = create :room
   end
 
   test "should get index" do

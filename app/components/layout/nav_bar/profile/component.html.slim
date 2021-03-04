@@ -13,5 +13,5 @@
           | Steam
       = link_to "Sign out", destroy_user_session_path, method: :delete, class: 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
 - else
-  a.text-gray-300.hover:bg-gray-700.hover:text-white.px-3.py-2.text_sm.block.rounded-md.font-medium href="#{ user_session_path }"
+  a.text-gray-300.hover:bg-gray-700.hover:text-white.px-3.py-2.text_sm.block.rounded-md.font-medium href="#{ user_steam_omniauth_authorize_path }"
     | Sign in

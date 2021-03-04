@@ -1,6 +1,0 @@
--# frozen_string_literal: true
-= turbo_frame_tag dom_id(tweet) do
-  .card.card-body
-    div
-      = tweet.content
-    = button_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' }, class: 'float-right'
