@@ -1,4 +1,4 @@
-.my-3.md:my-0.px-3.w-full.overflow-hidden.bg-gray-700.rounded.shadow-lg.pt-3.md:mx-2
+.my-0.px-2.md:px-3.w-full.overflow-hidden.bg-gray-700.rounded.shadow-lg.pt-3.mx-1.md:mx-2
   - (1..5).each do |position|
     - room_player = @room_team.room_players.find_by(position: position)
     = render(RoomTeams::Card::PlayerSlot::Component.new(position: position, room_team: @room_team, room_player: room_player))

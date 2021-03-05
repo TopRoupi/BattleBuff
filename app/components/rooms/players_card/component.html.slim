@@ -2,6 +2,6 @@ div [
   id="#{dom_id(@room)}"
   data-controller="rooms--players-card--component"
   ]
-  .block.md:flex.md:flex-row.px-2.md:px-0.mb-4
+  .flex.flex-row.px-1.md:px-0.mb-2.md:mb-4
     = render(RoomTeams::Card::Component.new(room_team: @room.room_teams.first))
     = render(RoomTeams::Card::Component.new(room_team: @room.room_teams.second))

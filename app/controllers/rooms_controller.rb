@@ -7,16 +7,6 @@ class RoomsController < ApplicationController
     CreateLobbyJob.perform_later @room
   end
 
-  def enter
-    team = @room.room_teams.find(params[:team])
-    position = params[:position]
-    RoomPlayer.create(room_team: team, user: current_user, position: position)
-  end
-
-  def leave
-    @room.room_teams.find(params[:team]).room_players.find_by(user: current_user).destroy
-  end
-
   # GET /rooms
   # GET /rooms.json
   def index

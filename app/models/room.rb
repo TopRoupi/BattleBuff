@@ -7,6 +7,7 @@ class Room < ApplicationRecord
   enum state: [:waiting, :progress, :finished], _default: "waiting"
 
   after_commit :set_room_teams, on: :create
+  after_commit :auto_create_rooms, on: :update
 
   private
 
@@ -14,5 +15,9 @@ class Room < ApplicationRecord
     2.times do
       room_teams << RoomTeam.create
     end
+  end
+
+  def auto_create_rooms
+    Room.create(name: "room") if Room.waiting.count < 1
   end
 end
